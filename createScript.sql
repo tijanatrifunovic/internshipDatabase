@@ -26,7 +26,11 @@ CREATE TABLE `user` (
   CONSTRAINT `idusertype` FOREIGN KEY (`idusertype`) REFERENCES `usertype` (`idusertype`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
+INSERT INTO `internship`.`user`
+("iduser","email","password","idusertype")
+VALUES
+(2,"tt163042m@student.etf.bg.ac.rs","Sifra123",1),
+(3,"company@mail.com","Sifra123",2);
 
 CREATE TABLE `company` (
   `iduser` int(11) NOT NULL,
@@ -36,7 +40,10 @@ CREATE TABLE `company` (
   CONSTRAINT `idcompany` FOREIGN KEY (`iduser`) REFERENCES `user` (`iduser`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
+INSERT INTO `internship`.`company`
+("iduser","name","address")
+VALUES
+(3,"Software Company","Bulevar Odlobodjenja 33");
 
 CREATE TABLE `department` (
   `iddepartment` int(11) NOT NULL,
@@ -69,6 +76,11 @@ CREATE TABLE `student` (
   CONSTRAINT `iddepartment` FOREIGN KEY (`iddepartment`) REFERENCES `department` (`iddepartment`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `iduser` FOREIGN KEY (`iduser`) REFERENCES `user` (`iduser`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `internship`.`student`
+("iduser","name","surname","indexnumber","iddepartment")
+VALUES
+(2,"Tijana","Trifunovic","3042/2016",1);
 
 
 CREATE TABLE `internship` (
